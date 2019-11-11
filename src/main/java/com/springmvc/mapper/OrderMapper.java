@@ -16,8 +16,8 @@ public interface OrderMapper {
 
     @Select("select * from tb_orderdetail where orderId = #{orderId}")
     @Results({
-            @Result(property = "item",column = "itemId",
-            one = @One(select = "queryItemById",fetchType = FetchType.EAGER))
+            @Result(property = "item", column = "itemId",
+                    one = @One(select = "queryItemById", fetchType = FetchType.EAGER))
     })
     List<TbOrderDetail> queryDetailAllById(int orderId);
 
