@@ -30,9 +30,10 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/applicationContext.xml</param-value>
         </init-param>
+        <!--启动时立即加载-->
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <!-- 将前端URL请求和后台处理方法controller建立对应关系-->
+    <!--让springmvc的前端控制器拦截所有请求 将前端URL请求和后台处理方法controller建立对应关系-->
     <servlet-mapping>
         <servlet-name>springServlet</servlet-name>
         <url-pattern>/</url-pattern>
