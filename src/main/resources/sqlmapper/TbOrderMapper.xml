@@ -3,10 +3,10 @@
 <mapper namespace="com.springmvc.dao.TbOrderMapper">
     <resultMap id="BaseResultMap" type="com.springmvc.domain.TbOrder">
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="userId" jdbcType="INTEGER" property="userid"/>
-        <result column="orderNumber" jdbcType="VARCHAR" property="ordernumber"/>
-        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
-        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="userId" jdbcType="INTEGER" property="userId"/>
+        <result column="orderNumber" jdbcType="VARCHAR" property="orderNumber"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
     <sql id="Base_Column_List">
     id, userId, orderNumber, createTime, updateTime
