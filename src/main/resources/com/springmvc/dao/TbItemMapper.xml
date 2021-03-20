@@ -3,9 +3,9 @@
 <mapper namespace="com.springmvc.dao.TbItemMapper">
     <resultMap id="BaseResultMap" type="com.springmvc.domain.TbItem">
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="itemName" jdbcType="VARCHAR" property="itemname"/>
-        <result column="itemPrice" jdbcType="DECIMAL" property="itemprice"/>
-        <result column="itemDetail" jdbcType="VARCHAR" property="itemdetail"/>
+        <result column="itemName" jdbcType="VARCHAR" property="itemName"/>
+        <result column="itemPrice" jdbcType="DECIMAL" property="itemPrice"/>
+        <result column="itemDetail" jdbcType="VARCHAR" property="itemDetail"/>
     </resultMap>
     <sql id="Base_Column_List">
     id, itemName, itemPrice, itemDetail

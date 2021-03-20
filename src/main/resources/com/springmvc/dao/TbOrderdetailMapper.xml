@@ -3,9 +3,9 @@
 <mapper namespace="com.springmvc.dao.TbOrderDetailMapper">
     <resultMap id="BaseResultMap" type="com.springmvc.domain.TbOrderDetail">
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="orderId" jdbcType="INTEGER" property="orderid"/>
-        <result column="totalPrice" jdbcType="DECIMAL" property="totalprice"/>
-        <result column="itemId" jdbcType="INTEGER" property="itemid"/>
+        <result column="orderId" jdbcType="INTEGER" property="orderId"/>
+        <result column="totalPrice" jdbcType="DECIMAL" property="totalPrice"/>
+        <result column="itemId" jdbcType="INTEGER" property="itemId"/>
         <result column="state" jdbcType="TINYINT" property="state"/>
     </resultMap>
     <sql id="Base_Column_List">

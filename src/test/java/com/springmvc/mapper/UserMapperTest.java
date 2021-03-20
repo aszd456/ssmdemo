@@ -1,22 +1,32 @@
 package com.springmvc.mapper;
 
 import com.springmvc.domain.TbUser;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:spring/applicationContext.xml"})
+/**
+ * @Before变成了@BeforeEach。
+ * @After变成了@AfterEach。
+ * @BeforeClass变成了@BeforeAll。
+ * @AfterClass变成了@AfterAll。
+ * @Ignore变成了@Disabled。
+ * @Category变成了@Tag。
+ * @Rule和@ClassRule没有了，用@ExtendWith和@RegisterExtension代替。
+ */
+
+@SpringJUnitConfig(locations = {"classpath*:spring/applicationContext.xml",
+        "classpath*:spring/spring-servlet.xml"})
 public class UserMapperTest {
     @Autowired
     private UserMapper userMapper;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
 
     }
@@ -37,7 +47,7 @@ public class UserMapperTest {
 
     @Test
     public void removeUser() {
-        userMapper.removeUser(4);
+        userMapper.removeUser(17);
     }
 
     @Test

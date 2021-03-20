@@ -25,7 +25,7 @@
     delete from tb_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="TbUser">
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.springmvc.domain.TbUser">
     insert into tb_user (id, user_name, password,
       name, age, sex, birthday,
       created, updated)

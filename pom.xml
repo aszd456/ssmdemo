@@ -17,7 +17,7 @@
         <!--mybatis版本号-->
         <mybatis.verion>3.5.6</mybatis.verion>
         <!-- log4j日志文件管理包版本 -->
-        <log4j.version>1.7.5</log4j.version>
+        <log4j.version>2.13.0</log4j.version>
         <slf4j.version>1.7.30</slf4j.version>
         <mybatis-spring.verion>2.0.6</mybatis-spring.verion>
         <jackson.version>2.9.10.8</jackson.version>
@@ -65,6 +65,7 @@
             <artifactId>spring-aspects</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
         <!--
         <dependency>
             <groupId>org.springframework</groupId>
@@ -95,13 +96,19 @@
             <version>${mybatis-spring.verion}</version>
         </dependency>
         -->
-        <!-- mybatis-generator-core 反向生成java代码-->
+        <!-- mybatis-generator-core 反向生成java代码
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
             <version>1.4.0</version>
         </dependency>
+        -->
         <!-- mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.4.1</version>
+        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
@@ -114,7 +121,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.49</version>
         </dependency>
-        <!-- junit测试-->
+        <!-- junit5测试-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -176,6 +183,16 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.10</version>
         </dependency>
 
         <!--gson-->
@@ -252,7 +269,7 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>7.0.1.Final</version>
+            <version>6.1.7.Final</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -265,13 +282,13 @@
         <!-- commons end-->
 
         <!-- 日志文件管理包 -->
-        <!-- log start
+        <!-- log start-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
         </dependency>
--->
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -299,12 +316,14 @@
             <artifactId>httpmime</artifactId>
             <version>4.5.13</version>
         </dependency>
+        <!--junit4，不用了，用5
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        -->
     </dependencies>
     <build>
         <finalName>elegantjc</finalName>
@@ -348,19 +367,21 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <!--
         <plugins>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.4.0</version>
                 <configuration>
-                    <!--允许移动生成的文件-->
+                    允许移动生成的文件
                     <verbose>true</verbose>
-                    <!--允许覆盖生成的文件-->
+                    允许覆盖生成的文件
                     <overwrite>true</overwrite>
                 </configuration>
             </plugin>
         </plugins>
+        -->
     </build>
 
 </project>

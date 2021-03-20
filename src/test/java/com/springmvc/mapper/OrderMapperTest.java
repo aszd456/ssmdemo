@@ -6,10 +6,11 @@ import com.springmvc.domain.TbOrder;
 import com.springmvc.domain.User;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -18,8 +19,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:spring/applicationContext.xml"})
+//@ExtendWith(SpringExtension.class)//junit5示范代码
+//@ContextConfiguration(locations = {"classpath*:spring/applicationContext.xml",
+//        "classpath*:spring/spring-servlet.xml"})
+@SpringJUnitConfig(locations = {"classpath*:spring/applicationContext.xml",
+        "classpath*:spring/spring-servlet.xml"})
 public class OrderMapperTest {
     @Autowired
     private OrderMapper orderMapper;

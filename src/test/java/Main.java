@@ -26,7 +26,7 @@ public class Main {
             String sql = "select * from tb_user where id=?";
             preparedStatement = connection.prepareStatement(sql);
             // 设置参数
-            preparedStatement.setLong(1, 1l);
+            preparedStatement.setLong(1, 1);
             // 执行查询
             resultSet = preparedStatement.executeQuery();
             // 处理结果集
