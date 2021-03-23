@@ -52,7 +52,7 @@
         <property name="dataSource" ref="dataSource"/>
         <!-- 配置 Mybatis 配置文件（可无） -->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <!-- 自动扫描 Xml 文件位置 -->
+        <!-- 自动扫描 Xml 文件位置 ,路径一样忽略-->
 <!--        <property name="mapperLocations" value="classpath:sqlmapper/*Mapper.xml"/>-->
         <property name="typeAliasesPackage" value="com.springmvc.domain"/>
         <!-- 枚举属性配置扫描，支持通配符 * 或者 ; 分割 -->
@@ -88,9 +88,12 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 指定扫描包的路径，就是mapper接口的路径，多个包中间以 半角逗号隔开   -->
         <property name="basePackage" value="com.springmvc.dao,com.springmvc.mapper"/>
-        <!-- 配置sqlSessionFactoryBeanName 默认sqlSessionFactory
+        <!-- 配置sqlSessionFactoryBeanName 默认sqlSessionFactory-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        -->
+
+    </bean>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
     </bean>
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

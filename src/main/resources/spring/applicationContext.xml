@@ -11,7 +11,11 @@
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!-- Service包(自动注入) -->
-    <context:component-scan base-package="com.springmvc.service"/>
+<!--    <context:component-scan base-package="com.springmvc.service"/>-->
+    <!--不扫描带有 @Controller 注解标注的类，而扫描其他注解标注的类-->
+    <context:component-scan base-package="com.springmvc" use-default-filters="true">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <import resource="classpath:spring/spring-mybatis.xml"/>
 </beans>
