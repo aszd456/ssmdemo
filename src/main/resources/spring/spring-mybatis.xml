@@ -121,7 +121,7 @@
             <tx:method name="search*" read-only="true"/>
             <tx:method name="datagrid*" read-only="true"/>
 
-            <tx:method name="*" read-only="true"/>
+            <tx:method name="*" rollback-for="Exception"/>
         </tx:attributes>
     </tx:advice>
 
