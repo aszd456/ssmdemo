@@ -18,8 +18,11 @@
     <context:component-scan base-package="com.springmvc.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-    <!-- 配置注解驱动，替代推荐使用的映射器以及适配器，json转换器 -->
-    <mvc:annotation-driven>
+    <!-- 配置注解驱动，替代推荐使用的映射器以及适配器，json转换器
+    register-defaults属性，当为true时，仍然注册默认的HttpMessageConverter，当为false则不注册，
+    仅仅使用用户自定义的HttpMessageConverter
+    -->
+    <mvc:annotation-driven validator="validatorFactoryBean" conversion-service="conversionService">
         <mvc:message-converters register-defaults="false">
             <bean id="mappingGsonHttpMessageConverter"
                   class="org.springframework.http.converter.json.GsonHttpMessageConverter">
@@ -30,10 +33,52 @@
                     </list>
                 </property>
             </bean>
+            <bean id="stringHttpMessageConverter"
+                  class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+    <!--配置完成后，在服务端就可以接收前端传来的日期参数了-->
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"
+          id="conversionService">
+        <property name="converters">
+            <set>
+                <!--                <ref bean="dateConverter"/>-->
+                <bean class="com.springmvc.common.DateConverter"/>
+            </set>
+        </property>
+    </bean>
+    <!--异常处理配置
+    配置时，提供一个 LocalValidatorFactoryBean 的实例，然后 Bean 的校验使用 HibernateValidator。-->
+    <bean class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
+          id="validatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <property name="validationMessageSource" ref="bundleMessageSource"/>
+    </bean>
+    <!--定义错误提示文本，在 resources 目录下新建一个 MyMessage.properties 文件
+SpringMVC 配置中，加载这个配置文件
+-->
+    <bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          id="bundleMessageSource">
+        <property name="basenames">
+            <list>
+                <!--不用加后缀.properties。否则失效-->
+                <value>classpath:MyMessage</value>
+            </list>
+        </property>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="cacheSeconds" value="300"/>
+    </bean>
+
     <!-- 放行静态资源-->
-    <mvc:default-servlet-handler/>
+<!--    <mvc:default-servlet-handler/>-->
 
     <!--静态资源配置-->
     <mvc:resources mapping="/**" location="/"/>
@@ -78,5 +123,4 @@
     </mvc:interceptors>
     -->
 
-    <bean class="com.springmvc.domain.User" id="user"/>
 </beans>
