@@ -20,7 +20,7 @@
         <log4j.version>2.13.0</log4j.version>
         <slf4j.version>1.7.30</slf4j.version>
         <mybatis-spring.verion>2.0.6</mybatis-spring.verion>
-        <jackson.version>2.9.10.8</jackson.version>
+        <jackson.version>2.12.6.1</jackson.version>
     </properties>
 
     <dependencies>
